@@ -4,31 +4,7 @@ const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { Pool } = require('pg');
-// --- START DEBUG CODE TO READ FILE CONTENT ---
-const fs = require('fs');
-const path = require('path');
 
-try {
-    const filePath = path.join(__dirname, 'server.js');
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const lines = fileContent.split('\n');
-
-    console.log('\n--- Content of server.js on Render ---');
-    console.log(`File path: ${filePath}`);
-    console.log(`File exists: ${fs.existsSync(filePath)}`);
-    console.log('--- Lines around error (Line 50 to 70) ---');
-    for (let i = Math.max(0, 50); i < Math.min(lines.length, 70); i++) {
-        console.log(`${i + 1}: ${lines[i]}`);
-    }
-    console.log('--- End Content of server.js ---');
-} catch (e) {
-    console.error('Error reading server.js content on Render:', e.message);
-}
-// --- END DEBUG CODE ---
-
-// 2. Initialise the Express application
-const app = express();
-const PORT = 3001;
 // 2. Initialise the Express application
 const app = express();
 const PORT = 3001;
