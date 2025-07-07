@@ -9,11 +9,11 @@ const { Pool } = require('pg');
 const app = express();
 const PORT = 3001;
 
-const JWT_SECRET = 'your-super-secret-key-that-is-long-and-secure';
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // --- Database Connection ---
 // Make sure this is your actual connection string from your Supabase project.
-const connectionString = 'postgresql://postgres:[YOUR-PASSWORD]@...supabase.co:5432/postgres';
+const connectionString = process.env.DATABASE_URL;
 
 const pool = new Pool({
     connectionString: connectionString,
