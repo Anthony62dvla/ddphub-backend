@@ -1,34 +1,5 @@
 // 1. Import the necessary packages
 const express = require('express');
-// --- TEMPORARY DEBUG CODE ---
-const fs = require('fs');
-const path = require('path');
-console.log('--- STARTING DEBUG CHECKS ---');
-console.log('Current working directory:', process.cwd());
-const nodeModulesPath = path.join(process.cwd(), 'node_modules');
-try {
-    const stats = fs.statSync(nodeModulesPath);
-    console.log(`node_modules exists: ${stats.isDirectory()}`);
-    if (stats.isDirectory()) {
-        console.log('Listing top-level node_modules:');
-        fs.readdirSync(nodeModulesPath).forEach(item => console.log(` - ${item}`));
-        const expressModulePath = path.join(nodeModulesPath, 'express');
-        try {
-            const expressStats = fs.statSync(expressModulePath);
-            console.log(`Express folder exists: ${expressStats.isDirectory()}`);
-        } catch (e) {
-            console.error(`Error checking express folder: ${e.message}`);
-        }
-    }
-} catch (e) {
-    console.error(`Error accessing node_modules: ${e.message}`);
-}
-console.log('NODE_PATH environment variable:', process.env.NODE_PATH || 'Not Set');
-console.log('--- ENDING DEBUG CHECKS ---');
-// --- END TEMPORARY DEBUG CODE ---
-
-// The problematic line from your original code:
-// const express = require('express'); // Keep your original line 2 here
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
